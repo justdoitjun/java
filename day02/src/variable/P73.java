@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class P73 {
 
 	public static void main(String[] args) {
-		String str = "";
+		String str = ""; //누군가가 수정을 했다면...?
 		Scanner sc = new Scanner(System.in);
 		System.out.println("명령어를 입력하시오(q,i,d,s)");
 		String cmd = sc.next();
