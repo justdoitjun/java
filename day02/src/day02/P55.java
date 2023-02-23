@@ -7,6 +7,7 @@ public class P55 {
 		int a = 2_000_000_000;
 		int b = 2_000_000_000;
 		
+		
 			
 		long c = a;
 		long d = b;
