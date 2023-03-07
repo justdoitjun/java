@@ -1,6 +1,10 @@
 package ws0307;
 
 // 공부할 때 찾아봐야할 것. 왜 public void 를 쓰면, static을 메소드랑 필드값에 넣으라고 하지? static이 뭔 의미일까. 
+// 공부하다가 알게 된 거임. 공부는 한줄로 간단하게 딱 한마디로 직관적으로 막말로 요약을 해야 기억에 남으니깐...막말로 정리하자면
+// 다른 클래스 가서 이 클래스 변수나 메소드 부르고 싶을 때 static 쓰면, 그냥 어디서든 Account.변수   Account.메소드로  겁나 편하게 부를 수 있음.
+// 그냥 그래서 static 쓰는 거였음. 
+
 
 public class Account {
 	private static String accNo; // 전화번호
