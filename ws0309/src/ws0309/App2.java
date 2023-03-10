@@ -7,21 +7,26 @@ import java.util.Set;
 public class App2 {
 
 	public static void main(String[] args) throws wException {
-		// 예외를 만들 필요없이, 그냥 if문으로 할 수도 있겠지만, 그냥 공부하는 목적으로 Exception 클래스를 새로 만들어서
-		// 예외처리를 해보았습니다.
-		// 문제에서 요구하는 것은 다른 클래스 없이 App과 Lotto 클래스로만 구현하는 것이지만, 오늘 배운 것을 활용해보고자합니다.
+		// 어제 제출했지만, 그냥 재미삼아 게임을 더 만들어보았습니다.
 		Scanner scanner = new Scanner(System.in);
+		Double yourMoney = 1000.0;
+		int cnt = 1;
 
 		while (true) {
 			System.out.println("로또 대박 시스템에 온 것을 환영합니다.");
-			// Thread.sleep(200);
-			System.out.println("대박을 내고 싶나요?");
-			// Thread.sleep(100);aa
-			System.out.println("당신의 운을 고르고 싶다면 아무 키나 누르세요.\n 만약, 그러고 싶지 않다면, Q를 누르세요.");
+			System.out.println("===============게임 소개 시작============");
+			System.out.println("1. 당신에게는 1000달러가 주어집니다.");
+			System.out.println("2. 한번 도전할 때마다 당신은 300달러를 지불해야만 운명을 실험할 수 있습니다.");
+			System.out.println("3. 지금이라도 당장 멈추면 1000달러를 가져갈 수 있습니다.");
+			System.out.println("하지만, 당신이 조금 더 야수의 심장을 가졌다면, 도전할 수 있습니다.");
+			System.out.println("4. 가진 돈을 전부 다 사용하면 파산할 수 있다는 걸 명심하세요.");
+			System.out.println("===============게임 소개 끝 ============");
+			System.out.println("당신의 운을 고르고 싶다면 아무 키나 누르세요.\n만약, 그러고 싶지 않다면, Q를 누르세요.");
 			String command = scanner.next();
 
 			if (command.equals("Q") || command.equals("q")) {
 				System.out.println("아쉽군요. 다음에 뵙겠습니다.");
+				System.out.println("당신은 1000달러를 가지고 떠났습니다.");
 				scanner.close();
 				return;
 			}
@@ -57,41 +62,41 @@ public class App2 {
 			winningNum.add(number1);
 			winningNum.add(number2);
 			winningNum.add(number3);
-
+			System.out.println("===========주사위를 모두 던졌습니다.=========");
 			System.out.println("이제 추첨을 시작합니다.");
 			luck.makeWinningNumberMoney();
 			int yourGrade = luck.checkRanking(winningNum);
 
 			double yourFortune = luck.prizeMoney(yourGrade);
 			System.out.println("당신의 운명은 이미 결정되었습니다.");
-			System.out.println("한번 더 시도하시면 당첨금은 10배로 오릅니다.\n 당신의 운명을 실험하고 싶다면, Y를, \n 여기서 만족해보고 싶다면 아무 거나 누르세요.");
-			System.out.println("명심하세요. 기회는 한번 뿐입니다. 3초 뒤에 당신은 운명을 결정할 수 있습니다.");
-			for (int i = 1; i < 4; i++) {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-
-				}
-				System.out.println(4 - i);
-			}
-			System.out.println("당신의 선택은?");
+			System.out.println("당신의 운명을 확인해보고 싶나요? 지금이라도 당신은 여기서 그만 둘 수 있습니다.");
+			System.out.println("그만두고 1000달러만 가져가려면 Y를 누르세요. 선택은 돌이킬 수 없습니다.");
+			System.out.println("============선택완료========");
 			String iAmTestingYou = scanner.next();
-
 			if (iAmTestingYou.equals("Y") || iAmTestingYou.equals("y")) {
 				scanner.close();
-				System.out.println("도박은 안됩니다.");
+				System.out.println("당신은 게임을 종료했습니다.");
+				System.out.printf("%d번만의 도전 끝에 당신의 재산은 %4.0f 달러가 되었습니다.", cnt, yourMoney);
 				return;
 			} // Y를 누른 경우.
-			System.out.println("당신은 여기서 만족하기로 결정하였습니다."); // N을 누른 경우.
+			System.out.println("당신은 300달러를 사용해서 당신의 운명을 알아보기로 했습니다."); // N을 누른 경우.
+			yourMoney -= 300.0;
 			if (yourFortune == 0.0) {
 				System.out.println("당신의 운명은...죄송하지만 꽝입니다."); // 꽝이 나온 경우.
+				System.out.printf("당신의 현재 재산은 ....%4.0f입니다.", yourMoney);
 			} else {
+				yourMoney += yourFortune;
 				System.out.printf("축하합니다. 당신의 당첨금은 %4.1f입니다.", yourFortune);
+				System.out.printf("당신의 현재 재산은 ....%4.0f입니다.", yourMoney);
 			}
-			// 추가된 부분. - 재미있을 거 같아서 그냥 한번 만들어봄.
-			// while문 이용해서 반복. 나중에 count 늘려서 count가 너무 많이 늘어나면
-			// 중독 관련 공지를 올릴 수도 있을 듯. for문이랑 while문을 자주 쓰구나.
-			System.out.println("아쉽나요? 혹은 당첨되신 분은 다음 기회를 더 노려보고 싶은가요?");
+
+			if (yourMoney < 0) {
+				System.out.println("당신은 파산하셨습니다.");
+				scanner.close();
+				return;
+			}
+
+			System.out.println("혹시 다음 기회를 더 노려보고 싶은가요?\n\n고민할 시간 3초 드리겠습니다.");
 			for (int i = 1; i < 4; i++) {
 				try {
 					Thread.sleep(1000);
@@ -104,14 +109,18 @@ public class App2 {
 			String reTry = "";
 			reTry = scanner.next();
 			// if (reTry.equals("R") == false || reTry.equlas("r") == false)
-			// 이건 통하지 않는다. 이유는? 연산자간의 순위때문에. R이랑 r도 다 되게 하고 싶은데 아직 잘 모르겠음. 
+			// 이건 통하지 않는다. 이유는? 연산자간의 순위때문에. R이랑 r도 다 되게 하고 싶은데 아직 잘 모르겠음.
 			if (!reTry.equals("R")) {
 				System.out.println("다음 기회에 뵙겠습니다.");
 				scanner.close();
 				break; // Y나 y가 아닌 것을 눌러서 종료함.
 			}
+			cnt++;
+			System.out.printf("%d번째 도전입니다.\n", cnt);
+			System.out.println("=================================");
 		} // while
 		scanner.close();
+		System.out.printf("%d번만의 도전 끝에 당신의 재산은 %4.0f 달러가 되었습니다.", cnt, yourMoney);
 
 	}
 
