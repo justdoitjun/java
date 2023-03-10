@@ -27,17 +27,7 @@ public class Account {
 		this.balance = balance;
 		this.grade = grade;
 	}
-	
-	//End of constructor
-	
-	
-	@Override
-	public String toString() {
-		return "Account [accNum=" + accNum + ", accName=" + accName + ", balance=" + balance + ", rate=" + rate
-				+ ", grade=" + grade + "]";
-	}
 
-	
 	//getter - setter
 	public double getBalance() {
 		return balance;
@@ -45,11 +35,10 @@ public class Account {
 	public String getGrade() {
 		return grade;
 	}//고객 등급 조회
+	public double getInterest() {
+		return balance * rate;
+	}//end of interests   
 	
-	
-	
-	
-	//method
 	public void withdraw(double money) {
 		if(money > this.balance) {
 			System.out.println("You can not withdraw your bucks over than your deposits.");
@@ -68,11 +57,13 @@ public class Account {
 		}
 		this.balance += money;
 	}// end of deposits
-	public double getInterest() {
-		return balance * rate;
-	}//end of interests   
 
-	//End of methods
+
+	@Override
+	public String toString() {
+	return "Account [accNum=" + accNum + ", accName=" + accName + ", balance=" + balance + ", rate=" + rate
+				+ ", grade=" + grade + "]";
+	}
 	
 	
 
