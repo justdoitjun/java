@@ -17,20 +17,23 @@ public class App {
 		}//End of for statement
 		System.out.println("==========================");
 		System.out.println("Following lines are answers to question number 3");
+		
 		for (int i = 0; i < array.length; i++) {
-			System.out.printf("%d 번째 사람의 잔액은 %4.2f, 이자금액은 %4.2f입니다.\n",i+1, array[i].getBalance(), array[i].getInterest());
+			System.out.printf("%d 번째 사람의 잔액은 %4.2f, 이자금액은 %4.2f입니다.\n"
+			,i+1, array[i].getBalance(), array[i].getInterest());
 		}//End of for statement
+		
 		System.out.println("==========================");
 		System.out.println("Following lines are answers to question number 4");
 		double sumM = 0.00;
 		int cnt = 0;
 		for (int i = 0; i < array.length; i++) {
-			if(array[i].getGrade() == "VIP") {
-				sumM += array[i].getBalance();
-				cnt ++;
-			}else{
-				continue;
-			}//End of if
+		if(array[i].getGrade() == "VIP") {
+			sumM += array[i].getBalance();
+			cnt ++;
+		}else{
+			continue;
+		}//End of if
 		}//End of for statement
 		double avr = sumM / cnt;
 		System.out.printf("%d명의 VIP고객의 잔액 합계는 %4.2f이고, 평균은 %4.2f입니다.", cnt, sumM, avr);
