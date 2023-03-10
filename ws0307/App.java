@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
 
-	public static void main(String[] args) throws WeirdException {
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Bank 계좌개설 터미널입니다. 당신은 4가지 정보를 입력해야합니다. ");
 		System.out.println("첫째.계좌번호를 일단 입력하세요.");
@@ -34,7 +34,7 @@ public class App {
 		System.out.println("=============================================");
 		Account.searchBalance();
 		System.out.println("=============================================");
-		Loop1: while (true) {
+		while (true) {
 			System.out.println("추가로 입금하시겠습니까. 입급하고 싶다면, d를 누르고, 출금하고 싶다면, w를 입력하세요. \n 끝내고 싶다면 아무거나 누르세요.");
 			String doIt = sc.next();
 			if (doIt.equals("d")) {
@@ -49,6 +49,7 @@ public class App {
 			else if (doIt.equals("w")) {
 				System.out.println("혹시 출금하시겠습니까. 금액을 넣어주세요.");
 				double g = Double.parseDouble(sc.next());
+				
 				try {
 					Account.withdraw(g);
 				} catch (WeirdException e) {
@@ -57,7 +58,7 @@ public class App {
 			} // end of else if
 			else {
 				System.out.println("아무거나 입력하셨습니다. 시스템을 종료합니다.");
-				break Loop1;
+				break;
 			}
 
 		} // end of while
