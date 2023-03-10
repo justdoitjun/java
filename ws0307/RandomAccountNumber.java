@@ -8,11 +8,9 @@ public class RandomAccountNumber {// 아직까지는 쓰지는 않는 클래스�
 	}
 
 	public static String make() {
-		String accPiece = "";
+		String accPiece;
 		Random r = new Random(10);
-		accPiece = r + "";
-//		accPiece = r.toString();
-		return accPiece;
+		return (;
 	}
 
 }
