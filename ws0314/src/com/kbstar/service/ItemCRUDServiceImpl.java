@@ -55,15 +55,13 @@ public class ItemCRUDServiceImpl implements CRUDService<String, Item> {
 		try {
 			dao.delete(k);
 		} catch (Exception e) {
-			
-			if(e instanceof SQLIntegrityConstraintViolationException) {
+
+			if (e instanceof SQLIntegrityConstraintViolationException) {
 				throw new Exception("시스템장애");
-			}else {
+			} else {
 				throw new Exception("해당 id가 존재하지 않습니다.");
 			}
 		}
-		
-		
 	}
 
 	@Override
