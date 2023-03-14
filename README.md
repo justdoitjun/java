@@ -3,11 +3,11 @@
 
 (2) ws0309 : 3월 9일 과제는 Assignment 외에도 while문을 이용해서 심심해서 한번 더 기능을 추가해보았습니다. (게임을 반복시키는 것)
 
-(3) ws0314 : 3월 14일 과제는 Cart 관련 DAO,Impl,DTO,SQL을 만들었습니다. 
-각각의 Test에서 중점적으로 Test하여 예외처리한 점은 다음과 같습니다. 
-    (1) Insert Test : a) 수량이 0이거나 음수인 경우 에러 b) 네트워크 오류
-    (2)SelectAll  Test : a) 불러올 내용이 없는 경우 오류처리  b) 네트워크 오류(존재하지 않는 ip주소)
-    (3)Delete Test : a) 카트ID가 없는 경우 에러처리  b) 네트워크 오류(존재하지 않는 ip주소) (edited)
+(3) ws0314 : 3월 14일 과제는 Cart 관련 DAO,Impl,DTO,SQL을 만들었습니다. \n
+각각의 Test에서 중점적으로 Test하여 예외처리한 점은 다음과 같습니다. \n
+    (1) Insert Test : a) 수량이 0이거나 음수인 경우 에러 b) 네트워크 오류 \n
+    (2)SelectAll  Test : a) 불러올 내용이 없는 경우 오류처리  b) 네트워크 오류(존재하지 않는 ip주소) \n
+    (3)Delete Test : a) 카트ID가 없는 경우 에러처리  b) 네트워크 오류(존재하지 않는 ip주소) (edited) \n
     등 입니다.
    
 
