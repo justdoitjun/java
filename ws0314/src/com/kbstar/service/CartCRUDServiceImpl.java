@@ -33,6 +33,7 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 	@Override
 	public void modify(Cart v) throws Exception {
 		try {
+			dao = new CartDaoImpl();
 			dao.update(v);
 		} catch (SQLRecoverableException e) {
 			throw new Exception("서비스 장애.");
@@ -63,6 +64,7 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 	@Override
 	public Cart get(String k) throws Exception {
 		Cart cart = null;
+		dao = new CartDaoImpl();
 		try {
 			cart = dao.select(k);
 			System.out.println("get 성공");

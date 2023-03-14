@@ -12,7 +12,7 @@ public class CartUpdateTest {
 
 		Cart cart = null;
 		try {
-			cart = new Cart("0007", null, null, 111, null);
+			cart = new Cart("2023314127100", null, null, 71, null);
 			crudService.modify(cart);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

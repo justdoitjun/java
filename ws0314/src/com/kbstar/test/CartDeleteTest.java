@@ -1,10 +1,8 @@
 package com.kbstar.test;
 
 import com.kbstar.dto.Cart;
-import com.kbstar.dto.Item;
 import com.kbstar.frame.CRUDService;
 import com.kbstar.service.CartCRUDServiceImpl;
-import com.kbstar.service.ItemCRUDServiceImpl;
 
 public class CartDeleteTest {
 

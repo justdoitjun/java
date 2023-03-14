@@ -12,7 +12,7 @@ public class CartSelectTest {
 
 		Cart cart = null;
 		try {
-			cart = crudService.get("0001");
+			cart = crudService.get("202331412710");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return;
