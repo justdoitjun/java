@@ -1,104 +1,169 @@
 package com.kbstar.app;
 
-import java.util.List;
 import java.util.Scanner;
 
-import com.kbstar.dto.Cart;
+import com.kbstar.dto.Account;
 import com.kbstar.dto.Cust;
-import com.kbstar.dto.Item;
+import com.kbstar.dto.Trsc;
+import com.kbstar.frame.BankService;
 import com.kbstar.frame.CRUDService;
-import com.kbstar.frame.ShopService;
-import com.kbstar.service.CartCRUDServiceImpl;
-import com.kbstar.service.CustCRUDServiceImpl;
-import com.kbstar.service.ItemCRUDServiceImpl;
-import com.kbstar.service.ShopServiceImpl;
+import com.kbstar.service.AccountCRUDServiceImpl;
+import com.kbstar.service.BankServiceImpl;
+import com.kbstar.service.CustCRUDServiceImple;
+import com.kbstar.service.TrscCRUDServiceImpl;
 
 public class App {
+
 	public static void main(String[] args) {
-		//register, login, mycart
-		ShopService<Cust, Cart> shopService = new ShopServiceImpl();
-		CRUDService<String, Cust> custService = new CustCRUDServiceImpl();
-		CRUDService<String, Item> itemService = new ItemCRUDServiceImpl();
-		CRUDService<String, Cart> cartService = new CartCRUDServiceImpl();
-		
+		BankService<String, String, String> bankService = new BankServiceImpl();
+		CRUDService<String, Cust> custService = new CustCRUDServiceImple();
+		CRUDService<String, Account> accService = new AccountCRUDServiceImpl();
+		CRUDService<String, Trsc> trscService = new TrscCRUDServiceImpl();
+
 		Scanner sc = new Scanner(System.in);
 		while (true) {
-			System.out.println("----   Shop Mall Program -----");
-			System.out.println("Login(l) or Register(r) (q) ...");
+			System.out.println("----   *KB Banking Program -----");
+			System.out.println("Login(l) or Register(r) or Quit(q) ...");
 			String cmd = sc.next();
 			if (cmd.equals("q")) {
-				System.out.println("Bye...");
 				break;
-			} else if (cmd.equals("r")) {// Register
-				System.out.println("Register.. ");
+			} else if (cmd.equals("r")) {
+				System.out.println("Regiter ...");
 				System.out.println("Input ID.. ");
 				String id = sc.next();
 				System.out.println("Input PWD.. ");
 				String pwd = sc.next();
 				System.out.println("Input NAME.. ");
 				String name = sc.next();
-				Cust cust = new Cust(id, pwd, name, 20);
+				System.out.println("Input EMAIL.. ");
+				String email = sc.next();
+				System.out.println("Input CONTACT.. ");
+				String contact = sc.next();
+				Cust cust = new Cust(id, pwd, name, email, contact);
 				try {
-					shopService.register(cust);
+					custService.register(cust);
 					System.out.println("환영합니다.");
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
-			} else if (cmd.equals("l")) {// Login
+
+			}
+
+			else if (cmd.equals("l")) {
 				System.out.println("Login.. ");
 				System.out.println("ID를 입력 하세요.. ");
 				String id = sc.next();
 				System.out.println("PWD를 입력 하세요.. ");
 				String pwd = sc.next();
 				Cust cust = null;
-
 				try {
-					cust = shopService.login(id, pwd);
+					cust = bankService.login(id, pwd);
+					System.out.println(cust);
 					System.out.println("로그인 성공");
-					System.out.println("----------------------------");
+					System.out.println("-------------------");
 					while (true) {
-						System.out.println("Menu(사용자정보조회(c),상품조회(it),카트입력(i),카트조회(ci),나가기(e))...");
+						System.out.println("Menu(m(makeAcc), t(transfer), i(accInfo) ...");
+						System.out.println("tr(trscInfo), d(deposit), w(withdraw), z(개명), e(exit) ...");
 						String cmn = sc.next();
-						if (cmn.equals("e")) {
-							System.out.println("Logout...");
+						if (cmn.equals("e")) { // 다시 로그인 화면으로 돌아감
 							break;
-						} else if (cmn.equals("c")) {
-							System.out.println("사용자정보조회...");
-							Cust custInfo = null;
-							custInfo = custService.get(cust.getId());
-							System.out.println(custInfo);
-						} else if (cmn.equals("it")) {
-							System.out.println("전체 상품조회");
-							List<Item> list = null;
-							list = itemService.get();
-							for(Item el : list) {
-								System.out.println(el);
+							// --------------------makeaccount
+						} else if (cmn.equals("m")) {
+							System.out.println("계좌 생성");
+							System.out.println("잔액 입력...");
+							Double balance = Double.parseDouble(sc.next());
+							System.out.println("예금주 성명 입력...");
+							String user_id = sc.next();
+							Account acc = null;
+							acc = new Account(null, balance, user_id);
+							accService.register(acc);
+							// --------------------transfer
+						} else if (cmn.equals("t")) {
+							System.out.println("Transfer ...");
+							System.out.println("input myAcc, receiverAcc, amount, desc");
+							try {
+								String myAcc = sc.next();
+								String receiverAcc = sc.next();
+								double amount = sc.nextDouble();
+								String desc = sc.next();
+								bankService.transfer(myAcc, receiverAcc, amount, desc);
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
 							}
-						} else if (cmn.equals("i")) {
-							System.out.println("카트입력");
-							System.out.println("상품 id 입력");
-							String item_id = sc.next();
-							System.out.println("수량 입력");
-							int cnt = Integer.parseInt(sc.next());
-							Cart cart = new Cart(cust.getId(),item_id, cnt);
-							cartService.register(cart);
-							System.out.println("정상적으로 카트에 담겼습니다.");
-							
-						} else if (cmn.equals("ci")) {// My Cart
-							System.out.println("나의 카트조회...");
-							List<Cart> list = null;
-							list = shopService.myCart(cust.getId());
-							for(Cart el : list) {
-								System.out.println(el);
+							//--------------------accountInfo
+						} else if(cmn.equals("i")) {
+							System.out.println("고객님의 계좌 잔액을 보고 싶은 경우이군요.");
+							System.out.println("고객님의 계좌번호를 입력하세요.");
+							try {
+								String yourAcc = sc.next();
+								Account account = null;
+								account = accService.get(yourAcc);
+								System.out.println(account);
+							}catch (Exception e) {
+								System.out.println(e.getMessage());
 							}
 						}
+							//--------------------trscInfo
+						  else if (cmn.equals("tr")) {
+							System.out.println("Select Transaction ...");
+							System.out.println("input trscNum");
+							try {
+								String trscNum = sc.next();
+								trscService.get(trscNum);
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
+							}
+							//--------------------deposit
+						} else if (cmn.equals("d")) {
+							System.out.println("Select deposit ...");
+							System.out.println("input myAcc, money");
+							try {
+								String myAcc = sc.next();
+								double money = sc.nextDouble();
+								bankService.deposit(myAcc, money);
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
+							}
+							//--------------------withdraw
+						} else if (cmn.equals("w")) {
+							System.out.println("Select withdraw ...");
+							System.out.println("input myAcc, money");
+							try {
+								String myAcc = sc.next();
+								double money = sc.nextDouble();
+								bankService.withdraw(myAcc, money);
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
+							}
+						} else if(cmn.equals("z")) {
+							try {
+								System.out.println("개명을 하셨나요???");
+								System.out.println("고객님의 계좌번호를 입력하세요.");
+								String yourAcc = sc.next();
+								System.out.println("새로운 이름을 입력해주세요.");
+								String yourNewName = sc.next();
+								Account account = accService.get(yourAcc);
+								account = new Account(yourAcc, account.getBalance(), yourNewName);
+								accService.modify(account);
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
+								return;
+							}
+							System.out.println("제신고 거래(개명처리)가 정상적으로 완료되었습니다.");
+							System.out.println("i 를 눌러 다시 확인해보세요.");
+							}
+						
 					}
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
-					// e.printStackTrace();
+					e.printStackTrace();
 				}
+
 			}
 		}
+
 		sc.close();
+
 	}
+
 }

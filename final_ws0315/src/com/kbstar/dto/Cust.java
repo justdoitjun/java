@@ -4,45 +4,63 @@ public class Cust {
 	private String id;
 	private String pwd;
 	private String name;
-	private int age;
-	
-	
+	private String email;
+	private String contact;
+
 	public Cust() {
 	}
-	public Cust(String id, String pwd, String name, int age) {
+
+	public Cust(String id, String pwd, String name, String email, String contact) {
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
-		this.age = age;
+		this.email = email;
+		this.contact = contact;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getPwd() {
 		return pwd;
 	}
+
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
-		return age;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setAge(int age) {
-		this.age = age;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
 	@Override
 	public String toString() {
-		return "Cust [id=" + id + ", pwd=" + pwd + ", name=" + name + ", age=" + age + "]";
+		return "Cust [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", contact=" + contact + "]";
 	}
-	
-	
+
 }

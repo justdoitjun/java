@@ -1,25 +1,28 @@
 package com.kbstar.frame;
 
 public class Sql {
-	//Cust DML
-	public static String deleteSql = "Delete from cust where id = ?";
-	public static String insertSql = "INSERT INTO cust VALUES(?,?,?,?)";
-	public static String updateSql = "Update cust SET pwd = ?, name = ?, age = ? where id = ?";
-	public static String selectSql = "SELECT * FROM cust WHERE id = ? ";
+
+	// Cust DML //String id, String pwd, String name, String email, String contact
+	public static String insertSql = "INSERT INTO cust VALUES(?, ?, ?, ?, ?)";
+	public static String deleteSql = "DELETE FROM cust WHERE id = ?";
+	public static String updateSql = "UPDATE cust SET pwd=?, name=?, email=?, contact=? WHERE id=?";
+	public static String selectSql = "SELECT * FROM cust WHERE id = ?";
 	public static String selectAllSql = "SELECT * FROM cust";
-	
-	//Item DML
-	public static String itemDeleteSql = "DELETE FROM item WHERE id = ?";
-	public static String itemInsertSql = "INSERT INTO item VALUES(?,?,?,?,SYSDATE)";
-	public static String itemUpdateSql = "UPDATE item SET name = ?, price = ?, rate = ? WHERE ID = ?";
-	public static String itemSelectsql = "SELECT * FROM item WHERE id = ?";
-	public static String itemSelectAllSql = "SELECT * FROM item";
-	
-	// Cart DML
-	public static String cartInsertSql = "INSERT INTO cart VALUES(?, ?, ?, ?, SYSDATE)";
-	public static String cartDeleteSql = "DELETE FROM cart WHERE id = ?";
-	public static String cartUpdateSql = "UPDATE cart SET cnt=? WHERE id=?";
-	public static String cartSelectSql = "SELECT * FROM cart WHERE id = ?";
-	public static String cartSelectAllSql = "SELECT * FROM cart";
-	public static String myCartSelectAllSql = "SELECT * FROM cart WHERE user_id = ?";
+
+	// Account DML //String accNo, double balance, String user_name
+	public static String accountInsertSql = "INSERT INTO account VALUES (?,?,?)";
+	public static String accountDeleteSql = "DELETE FROM account WHERE accNo = ?";
+	public static String accountUpdateSql = "UPDATE account SET balance = ?, user_name = ? WHERE accNo = ?";
+	public static String accountSelectSql = "SELECT * FROM account WHERE accNo = ?";
+	public static String accountSelectAllSql = "SELECT * FROM account";
+
+	// Trsc DML //String tracNo, String accNo, String receiverAcc, double amount,
+	// String type, String desc
+	public static String trscInsertSql = "INSERT INTO  trsc VALUES(?, ?, ?, ?, ?, ?)";
+//	public static String trscDeleteSql = "DELETE FROM trsc WHERE id = ?";
+//	public static String trscUpdateSql = "UPDATE trsc SET cnt=? WHERE id=?";
+	public static String trscSelectSql = "SELECT * FROM trsc WHERE tracNo = ?";
+	public static String trscSelectAllSql = "SELECT * FROM trsc";
+	public static String mytrscSelectAllSql = "SELECT * FROM trsc WHERE accNo = ?";
+
 }
