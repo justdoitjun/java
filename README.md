@@ -52,7 +52,8 @@ __double underscores__ \n
 [Look over google websites! Just Google!](https://google.com, "google link")
 
 ##이미지
-https://github.com/justdoitjun/java/blob/assignments/IMG_9342.JPG
+<img width="500px", src=https://github.com/justdoitjun/java/blob/assignments/IMG_9342.JPG>
+
 
 (1) ws0228 : 2월 28일 과제는 Assignment 레퍼지토리와 구글 드라이브에 모두 올렸으나...업로드 경로가 올바르지 않아서 Java/Assignment 브랜치에 다시 올립니다...
 
