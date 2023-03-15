@@ -20,4 +20,5 @@
 ![2-1_title](https://github.com/leejeani/javaws/blob/main/ws0306/0309.png)
 
 
-<img width="500" alt="스크린샷 2022-03-27 오전 12 41 14" src="https://github.com/leejeani/javaws/blob/main/ws0306/0309.png">
+<img width="500" alt="스크린샷 2022-03-27 오전 12 41 14" src="https://github.com/justdoitjun/java/blob/assignments/ws0315.jpg">
+https://github.com/justdoitjun/java/blob/assignments/ws0315.jpg
