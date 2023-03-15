@@ -11,7 +11,9 @@
     - GIT
     
     ***
-    
+
+
+## 단계별 
 1. ##first
         1. first
         2. second
@@ -19,11 +21,13 @@
 2. ##second
 3. ##third
 
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
+## 밑줄/ 기울기
+*single asterisks* \n
+_single underscores_ \n
+**double asterisks** \n 
+__double underscores__ \n
 
+## 코드 넣는 방법
 <pre>
 <code>
     	@Override
@@ -44,8 +48,11 @@ __double underscores__
 </code>
 </pre>
 
-
+##링크
 [Look over google websites! Just Google!](https://google.com, "google link")
+
+##이미지
+https://github.com/justdoitjun/java/blob/assignments/IMG_9342.JPG
 
 (1) ws0228 : 2월 28일 과제는 Assignment 레퍼지토리와 구글 드라이브에 모두 올렸으나...업로드 경로가 올바르지 않아서 Java/Assignment 브랜치에 다시 올립니다...
 
