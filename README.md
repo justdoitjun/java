@@ -52,7 +52,8 @@ __double underscores__ \n
 [Look over google websites! Just Google!](https://google.com, "google link")
 
 ##이미지
-<img width="500px", src=https://github.com/justdoitjun/java/blob/assignments/IMG_9342.JPG>
+<img width="1674" alt="스크린샷 2022-03-25 오후 4 55 35" src="https://user-images.githubusercontent.com/60570733/160078345-f4f8cd46-c001-4f92-891c-38c0dbb4c404.png" >
+<img width="1674", alt= "london", src="https://github.com/justdoitjun/java/blob/assignments/IMG_9342.JPG">
 
 
 (1) ws0228 : 2월 28일 과제는 Assignment 레퍼지토리와 구글 드라이브에 모두 올렸으나...업로드 경로가 올바르지 않아서 Java/Assignment 브랜치에 다시 올립니다...
