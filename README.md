@@ -1,4 +1,52 @@
-# java
+# <과제>
+## java
+### java
+
+***
+
+- ## 기술 스택
+  - ### Back-end
+    - 자바 11
+    - 오라클 버전
+    - GIT
+    
+    ***
+    
+1. ##first
+        1. first
+        2. second
+        3. third
+2. ##second
+3. ##third
+
+*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+
+<pre>
+<code>
+    	@Override
+	public Cust login(String id, String pwd)  throws Exception{
+		Cust cust = null;
+		cust = custDao.select(id);
+		if(cust != null) {
+			if(cust.getPwd().equals(pwd)) {
+				System.out.println("Successful Login");
+			}else{
+				throw new Exception("Login Failed");
+			}
+		}else {
+			throw new Exception("LoginFail");
+		}
+		return cust;
+	}
+</code>
+</pre>
+
+
+[Look over google websites! Just Google!](https://google.com, "google link")
+
 (1) ws0228 : 2월 28일 과제는 Assignment 레퍼지토리와 구글 드라이브에 모두 올렸으나...업로드 경로가 올바르지 않아서 Java/Assignment 브랜치에 다시 올립니다...
 
 (2) ws0309 : 3월 9일 과제는 Assignment 외에도 while문을 이용해서 심심해서 한번 더 기능을 추가해보았습니다. (게임을 반복시키는 것)
